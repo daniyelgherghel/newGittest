@@ -1,0 +1,38 @@
+ // V5.3
+var lecturedBooks = {
+  books: [],
+  displayBooks: function() {
+    if (this.books.length === 0 ) {
+      console.log('You do not like to read!');
+    } else {
+      console.log('The books I read were: ');
+        for (var i = 0; i < this.books.length; i++){
+        if (this.books[i].completed === true) {
+          console.log('(x)', this.books[i].addBooks);
+        } else{
+          console.log('( )', this.books[i].addBooks);
+        }
+      }
+    }
+  },
+  addBooks: function(addBooks) {
+    this.books.push({
+      addBooks: addBooks,
+      completed: false
+    });
+    this.displayBooks();
+  },
+  changeBooks: function(position, addBooks) {
+    this.books[position].addBooks = addBooks;
+    this.displayBooks();
+  },
+  deleteBooks: function(position) {
+    this.books.splice(position, 1);
+    this.displayBooks();
+  },
+  toogleCompleted: function(position){
+    var addMore = this.books[position];
+    addMore.completed = !addMore.completed;
+    this.displayBooks();
+  }
+};
